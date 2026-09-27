@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'alii123x/temperature-converter'
+        DOCKER = 'C:\\Users\\alial\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe'
     }
 
     stages {
@@ -48,18 +49,11 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                bat "docker build -t %DOCKER_IMAGE%:%BUILD_NUMBER% -t %DOCKER_IMAGE%:latest ."
+                bat "%DOCKER% build -t %DOCKER_IMAGE%:%BUILD_NUMBER% -t %DOCKER_IMAGE%:latest ."
             }
         }
 
         stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
-                    bat "docker push %DOCKER_IMAGE%:%BUILD_NUMBER%"
-                    bat "docker push %DOCKER_IMAGE%:latest"
-                }
-            }
-        }
-    }
-}
+                    bat "%DOCKER% login -u %DOCKER_USER% -p
