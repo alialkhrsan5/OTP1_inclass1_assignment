@@ -56,4 +56,4 @@ pipeline {
         stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    bat "%DOCKER% login -u %DOCKER_USER% -p
+                    bat "%DOCKER% login -u %DOCKER_USER% -p %DOCKER_PASS%"
