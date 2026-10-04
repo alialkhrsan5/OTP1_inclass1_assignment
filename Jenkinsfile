@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE = 'alii123x/temperature-converter'
+        DOCKER_IMAGE = 'alii123x/temp-converter-fx'
         DOCKER = 'C:\\Users\\alial\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe'
     }
 
