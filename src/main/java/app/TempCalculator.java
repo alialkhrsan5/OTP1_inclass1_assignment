@@ -31,9 +31,6 @@ public class TempCalculator {
         return celsius < -40 || celsius > 50;
     }
 
-    /**
-     * Converts a value using the conversion type stored in the database.
-     */
     public static double convert(String unitName, double value) {
         switch (unitName) {
             case "Fahrenheit to Celsius":
